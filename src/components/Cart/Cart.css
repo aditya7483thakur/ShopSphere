@@ -1,0 +1,50 @@
+.scrollable-div{
+    width: 100%; 
+      height: 55%;
+      border: 1px solid #ccc;
+      margin-top: 1rem;
+      overflow: auto;
+}
+
+.cart-total-div{
+    width: 90%;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    margin-left: 5%;
+    margin-top: 1rem;
+}
+
+.cart-total{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.cart-total div{
+    font-size: 1.3rem;
+}
+
+.cart-total button{
+    border: none;
+    background-color: #f25252;
+    color:white;
+    font-size: 1.7rem;
+}
+
+.cart-btn{
+    height: 3rem;
+    width: 100%;
+    margin-top: 1rem;
+    border:none;
+    background-color: rgb(34,34,34);
+    color: white;
+    font-size: 100%;
+}
+
+
+@media (min-width:300px) and (max-width:991px) {
+    .offcanvas{
+        width: 100% !important;
+    }
+}
