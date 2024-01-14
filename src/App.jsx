@@ -17,7 +17,3 @@ function App() {
 }
 
 export default App;
-
-// Search Engine
-// Contact Us
-// Code Comments Needed

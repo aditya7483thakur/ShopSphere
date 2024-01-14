@@ -3,11 +3,39 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import "./Cart.css";
 import { useContext } from "react";
 import { CartContext } from "../../store/CartStore-context";
-import SearchResults from "../SearchResults/SearchResults";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
   const { cartProductList, itemAmount, totalPrice, emptyCart } =
     useContext(CartContext);
+
+  const makePayment = async () => {
+    const stripe = await loadStripe(
+      "pk_test_51OXzJbSHKjSZN29ow9OrF60bUiJUu2G3fZFIHOENkOwqzo5B1MSvIUPEEJ1ZhWkyVlpAsdqyVMKZwLRijrDYs4ah00S1cCYi2K"
+    );
+
+    const body = {
+      products: cartProductList,
+    };
+
+    const response = await fetch("http://localhost:4000/users/payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const session = await response.json();
+
+    const result = stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      console.log(result.error);
+    }
+  };
 
   return (
     <>
@@ -42,7 +70,9 @@ const Cart = () => {
               <RiDeleteBinLine />
             </button>
           </div>
-          <button className="cart-btn">Checkout</button>
+          <button className="cart-btn" onClick={makePayment}>
+            Checkout
+          </button>
         </div>
       </div>
     </>

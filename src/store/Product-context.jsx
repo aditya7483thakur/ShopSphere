@@ -4,6 +4,7 @@ import { createContext } from "react";
 
 export const ProductListContext = createContext();
 
+//fetching products from api
 const ProductListProdiver = ({ children }) => {
   const [productList, setProductList] = useState([]);
 

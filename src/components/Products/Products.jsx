@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Product from "../Product/Product";
 import "./Products.css";
 import { ProductListContext } from "../../store/Product-context";

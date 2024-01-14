@@ -94,7 +94,7 @@ const Navbar = () => {
             </ul>
             <form className="d-flex search-input" role="search">
               <input
-                className="form-control me-2"
+                className="form-control me-2 search-bar"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
