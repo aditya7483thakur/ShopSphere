@@ -22,33 +22,33 @@ const Return = () => {
       });
   }, []);
 
-  // if (status === "open") {
-  //   return <Navigate to="/check" />;
-  // }
+  if (status === "open") {
+    return <Navigate to="/check" />;
+  }
 
-  // if (status === "complete") {
-  return (
-    <div className="successs-container">
-      <div className="success-box">
-        <h2 className="success-heading">Payment Successful</h2>
-        <p className="success-message">
-          Congratulations! Your payment was successful. Thank you for shopping
-          with us!
-        </p>
-        <button className="success-button">
-          <Link to={"/"} className="success-button-link">
-            Go to Shop
-          </Link>
-        </button>
-        <button className="clear-cart-button" onClick={emptyCart}>
-          Clear Cart
-        </button>
+  if (status === "complete") {
+    return (
+      <div className="success-container">
+        <div className="success-box">
+          <h2 className="success-heading">Payment Successful</h2>
+          <p className="success-message">
+            Congratulations! Your payment was successful. Thank you for shopping
+            with us!
+          </p>
+          <button className="success-button">
+            <Link to={"/"} className="success-button-link">
+              Go to Shop
+            </Link>
+          </button>
+          <button className="clear-cart-button" onClick={emptyCart}>
+            Clear Cart
+          </button>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
 
-// return null;
-// };
+  return null;
+};
 
 export default Return;

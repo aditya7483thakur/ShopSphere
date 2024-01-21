@@ -22,7 +22,6 @@ const Navbar = () => {
                   <span style={{ color: "rgb(140, 251, 255)" }}>Sphere</span>
                 </h5>
               </div>
-              <Link to={"/return"}>wow</Link>
               <div className="col-md-10 my-auto d-flex justify-content-end">
                 <form role="search" className="ms-auto search-input">
                   <div className="input-group">
