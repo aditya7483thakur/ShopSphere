@@ -22,6 +22,7 @@ const Navbar = () => {
                   <span style={{ color: "rgb(140, 251, 255)" }}>Sphere</span>
                 </h5>
               </div>
+              <Link to={"/return"}>wow</Link>
               <div className="col-md-10 my-auto d-flex justify-content-end">
                 <form role="search" className="ms-auto search-input">
                   <div className="input-group">
@@ -76,11 +77,14 @@ const Navbar = () => {
             <button
               className="navbar-toggler"
               type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+              onClick={() => {
+                const navbarCollapse = document.getElementById(
+                  "navbarSupportedContent"
+                );
+                if (navbarCollapse) {
+                  navbarCollapse.classList.toggle("show");
+                }
+              }}
             >
               <span className="navbar-toggler-icon"></span>
             </button>
