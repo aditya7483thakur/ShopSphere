@@ -9,7 +9,9 @@ import { useContext, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
 import { UserContext } from "../../store/User-context";
 
-const stripePromise = loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(
+  "pk_test_51OXzJbSHKjSZN29ow9OrF60bUiJUu2G3fZFIHOENkOwqzo5B1MSvIUPEEJ1ZhWkyVlpAsdqyVMKZwLRijrDYs4ah00S1cCYi2K"
+);
 
 const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState("");
