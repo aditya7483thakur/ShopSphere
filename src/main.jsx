@@ -15,6 +15,7 @@ import UserDetails from "./pages/UserDetails/UserDetails.jsx";
 import CheckoutForm from "./pages/CheckoutPages/CheckoutForm.jsx";
 import Return from "./pages/CheckoutPages/Return.jsx";
 import About from "./pages/About/About.jsx";
+import Success from "./pages/CheckoutPages/Success.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
       {
         path: "/return",
         element: <Return />,
+      },
+
+      {
+        path: "/success",
+        element: <Success />,
       },
     ],
   },
