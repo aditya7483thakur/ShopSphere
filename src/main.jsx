@@ -45,6 +45,11 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
+
+      {
+        path: "/success",
+        element: <Success />,
+      },
       {
         path: "/search-results",
         element: <SearchResults />,
@@ -60,11 +65,6 @@ const router = createBrowserRouter([
       {
         path: "/return",
         element: <Return />,
-      },
-
-      {
-        path: "/success",
-        element: <Success />,
       },
     ],
   },
