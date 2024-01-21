@@ -1,224 +1,130 @@
+// Navbar.js
+import React, { useRef } from "react";
 import "./Navbar.css";
 import { CgProfile } from "react-icons/cg";
 import Cart from "../Cart/Cart";
 import CartIcon from "../CartIcon/CartIcon";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef } from "react";
 
 const Navbar = () => {
   const searchTerm = useRef("");
-
   const navigate = useNavigate();
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark sticky-top bg-dark large-navbar">
-        <div className="container-fluid">
-          <a className="navbar-brand nav-title" href="#">
-            Shop <span style={{ color: "rgb(140, 251, 255)" }}>Sphere</span>
-          </a>
-          <button
-            className="navbar-toggler shadow-none border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  About
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Categories
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/categories/men's clothing"
-                    >
-                      men's clothing
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/categories/women's clothing"
-                    >
-                      women's clothing
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/categories/jewelery">
-                      jewelery
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/categories/electronics"
-                    >
-                      electronics
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <form className="d-flex search-input" role="search">
-              <input
-                className="form-control me-2 search-bar"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                ref={searchTerm}
-              />
-              <button
-                className="btn btn-success"
-                type="submit"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate(`/search-results?query=${searchTerm.current.value}`);
-                }}
-              >
-                Search
-              </button>
-            </form>
-
-            <div className="search-container">
-              <div className="cart-icon">
-                <CartIcon />
+      <div className="main-navbar shadow-sm sticky-top bg-dark">
+        <div className="top-navbar">
+          <div className="container-fluid">
+            <div className="d-flex">
+              <div className="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
+                <h5 className="brand-name nav-title">
+                  Shop{" "}
+                  <span style={{ color: "rgb(140, 251, 255)" }}>Sphere</span>
+                </h5>
               </div>
-
-              <div className="profile-icon">
-                <CgProfile />
+              <div className="col-md-10 my-auto d-flex justify-content-end">
+                <form role="search" className="ms-auto search-input">
+                  <div className="input-group">
+                    <input
+                      type="search"
+                      placeholder="Search your product"
+                      className="form-control me-2 search-bar"
+                      style={{ height: "40px", borderRadius: "5px" }}
+                      ref={searchTerm}
+                    />
+                    <button
+                      className="btn bg-success text-white"
+                      type="submit"
+                      style={{ height: "40px", borderRadius: "5px" }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate(
+                          `/search-results?query=${searchTerm.current.value}`
+                        );
+                      }}
+                    >
+                      Search
+                    </button>
+                  </div>
+                </form>
+                <ul className="nav justify-content-end">
+                  <div className="nav-item cart-icon">
+                    <CartIcon />
+                  </div>
+                  <div
+                    className="nav-item profile-icon"
+                    onClick={() => navigate("/user-details")}
+                  >
+                    <CgProfile />
+                  </div>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-      </nav>
-
-      <nav className="navbar navbar-dark sticky-top bg-dark small-navbar">
-        <div className="container-fluid wow">
-          <a className="navbar-brand nav-title" href="#">
-            Shop <span style={{ color: "rgb(140, 251, 255)" }}>Sphere</span>
-          </a>
-          <div className="search-container">
-            <div className="cart-icon">
-              <CartIcon />
-            </div>
-
-            <div className="profile-icon">
-              <CgProfile />
+        <nav className="navbar navbar-expand-lg">
+          <div className="container-fluid">
+            <a
+              className="navbar-brand d-block d-sm-block d-md-none d-lg-none"
+              href="#"
+            >
+              <b>
+                Shop
+                <span style={{ color: "rgb(2, 8, 195)" }}>Sphere</span>
+              </b>
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">
+                    About
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/categories/men's clothing">
+                    Men's clothing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/categories/women's clothing">
+                    Women's clothing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/categories/jewelery">
+                    Jewellery
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/categories/electronics">
+                    Electronics
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
-          <button
-            className="navbar-toggler shadow-none border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  About
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Categories
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/categories/men's clothing"
-                    >
-                      men's clothing
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
+        </nav>
+      </div>
 
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/categories/women's clothing"
-                    >
-                      women's clothing
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/categories/jewelery">
-                      jewelery
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link
-                      className="dropdown-item"
-                      to="/categories/electronics"
-                    >
-                      electronics
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      {/* OffCanvas */}
       <Cart />
     </>
   );

@@ -1,0 +1,93 @@
+:root {
+  --primary-color: #2f2f2f;
+  --text-dark: #18181b;
+  --text-light: #71717a;
+  --white: #ffffff;
+  --max-width: 1200px;
+  --header-font: "Lora", serif;
+}
+
+img {
+  display: flex;
+  width: 100%;
+}
+
+header {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url("../../assets/LandingPage.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header__container {
+  text-align: center;
+  color: var(--white);
+}
+
+.header__container h1 {
+  padding-top: 8.2rem;
+  margin-bottom: 3rem;
+  font-size: 4rem;
+  font-weight: 600;
+  font-family: var(--header-font);
+}
+
+.header__container p {
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+}
+
+.scroll-button {
+  display: inline-block;
+  padding: 0 12px;
+  margin-bottom: 8rem;
+  font-size: 3rem;
+  color: var(--white);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--white);
+  border-radius: 100%;
+}
+
+.scroll-button :hover {
+  cursor: pointer;
+}
+
+.products-heading {
+  font-weight: 900;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 3rem;
+  text-decoration: underline;
+}
+
+.products-container {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 600px) {
+  .header__container h1 {
+    padding-top: 8.2rem;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: var(--header-font);
+  }
+
+  .header__container p {
+    max-width: 600px;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+}

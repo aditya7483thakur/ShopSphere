@@ -1,0 +1,53 @@
+/* Return.css */
+
+.success-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.success-box {
+  text-align: center;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.success-heading {
+  color: #28d434;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.success-button,
+.clear-cart-button {
+  background-color: #64d46c;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin: 5px;
+}
+
+.success-button:hover,
+.clear-cart-button:hover {
+  transform: scale(1.1);
+}
+
+.success-button-link {
+  color: rgba(0, 0, 0, 0.696);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.clear-cart-button {
+  background-color: #f44336;
+}

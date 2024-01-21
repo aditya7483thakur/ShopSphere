@@ -5,12 +5,8 @@ import { useLocation } from "react-router-dom";
 
 const SearchResults = () => {
   const { search } = useLocation();
-  console.log(search);
   const queryParams = new URLSearchParams(search);
-  console.log(queryParams);
   const queryValue = queryParams.get("query");
-  console.log(queryValue);
-
   const { productList } = useContext(ProductListContext);
   return (
     <>

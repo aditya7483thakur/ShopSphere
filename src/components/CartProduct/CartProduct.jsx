@@ -16,18 +16,18 @@ const CartProduct = ({ item }) => {
           <div className="card-body">
             <div className="body-content-top">
               <h5 className="card-title">{item.title}</h5>
-              <div className="cross" onClick={() => removeFromCart(item.id)}>
+              <div className="cross" onClick={() => removeFromCart(item._id)}>
                 <RxCross1 />
               </div>
             </div>
             <div className="body-content-bottom">
               <div className="plus-minus-btn">
-                <button onClick={() => decrementProduct(item, item.id)}>
+                <button onClick={() => decrementProduct(item._id)}>
                   <p>-</p>
                 </button>
 
                 <p>{item.amount}</p>
-                <button onClick={() => incrementProduct(item, item.id)}>
+                <button onClick={() => incrementProduct(item._id)}>
                   <p>+</p>
                 </button>
               </div>

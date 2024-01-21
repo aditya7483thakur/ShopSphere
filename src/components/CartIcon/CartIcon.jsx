@@ -12,7 +12,12 @@ const CartIcon = () => {
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasRight"
       aria-controls="offcanvasRight"
-      style={{ color: "white", fontSize: "100%", padding: "0" }}
+      style={{
+        color: "white",
+        fontSize: "100%",
+        padding: "0px",
+        marginTop: "-10px",
+      }}
     >
       <BsCart2 />
       <span

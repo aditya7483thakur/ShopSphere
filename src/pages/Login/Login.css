@@ -37,7 +37,11 @@ input {
 .login:hover {
   background-color: #0056b3;
 }
-
+.main-div {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  min-height: 67vh;
+}
 /* Responsive Styles */
 @media screen and (max-width: 600px) {
   .login-container {
@@ -49,5 +53,16 @@ input {
   input,
   .login {
     width: 100%;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 1200px) {
+  .main-div {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }

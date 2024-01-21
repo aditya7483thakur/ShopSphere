@@ -45,10 +45,7 @@ const Product = ({ item }) => {
           </p>
           <p className="product-price">${item.price}</p>
         </div>
-        <button
-          className="add-to-cart"
-          onClick={() => addToCart(item, item.id)}
-        >
+        <button className="add-to-cart" onClick={() => addToCart(item._id)}>
           Add to Cart
         </button>
       </div>

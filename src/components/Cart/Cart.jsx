@@ -3,38 +3,25 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import "./Cart.css";
 import { useContext } from "react";
 import { CartContext } from "../../store/CartStore-context";
-import { loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { UserContext } from "../../store/User-context";
 
 const Cart = () => {
   const { cartProductList, itemAmount, totalPrice, emptyCart } =
     useContext(CartContext);
+  const { setPayment } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const makePayment = async () => {
-    const stripe = await loadStripe(
-      "pk_test_51OXzJbSHKjSZN29ow9OrF60bUiJUu2G3fZFIHOENkOwqzo5B1MSvIUPEEJ1ZhWkyVlpAsdqyVMKZwLRijrDYs4ah00S1cCYi2K"
-    );
-
-    const body = {
-      products: cartProductList,
-    };
-
-    const response = await fetch("http://localhost:4000/users/payment", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-
-    const session = await response.json();
-
-    const result = stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (result.error) {
-      console.log(result.error);
+    if (cartProductList.length === 0) {
+      return toast("Add Items to cart!", {
+        icon: "🛍️",
+      });
     }
+
+    setPayment(true);
+    navigate("/check");
   };
 
   return (
@@ -59,7 +46,7 @@ const Cart = () => {
         <div className="scrollable-div">
           <div className="offcanvas-body">
             {cartProductList.map((item) => (
-              <CartProduct key={item.id} item={item}></CartProduct>
+              <CartProduct key={item._id} item={item}></CartProduct>
             ))}
           </div>
         </div>

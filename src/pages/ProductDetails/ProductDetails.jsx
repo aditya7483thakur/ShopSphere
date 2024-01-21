@@ -36,7 +36,7 @@ const ProductDetails = () => {
           <div className="product-details-btns">
             <button
               className="product-details-btn"
-              onClick={() => addToCart(product, product.id)}
+              onClick={() => addToCart(product._id)}
             >
               Add to cart
             </button>

@@ -1,50 +1,76 @@
-.small-navbar {
-  display: none;
+.main-navbar {
+  border-bottom: 1px solid #ccc;
 }
+.main-navbar .top-navbar {
+  padding-top: 4px;
+  padding-bottom: 5px;
+}
+.main-navbar .top-navbar .brand-name {
+  color: #fff;
+}
+.main-navbar .top-navbar .nav-link {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+.main-navbar .top-navbar {
+  padding: 0px 0px;
+  border-radius: 0px;
+}
+.main-navbar .top-navbar .dropdown-item {
+  padding: 8px 16px;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+.main-navbar .top-navbar .dropdown-item {
+  width: 20px;
+  text-align: center;
+  color: #2874f0;
+  font-size: 14px;
+}
+.main-navbar .navbar {
+  padding: 0px;
+  background-color: #ddd;
+}
+
+.main-navbar .navbar .nav-item .nav-link {
+  padding: 8px 20px;
+  color: #000;
+  font-size: 15px;
+}
+
 .nav-title {
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
+  margin-top: 7px;
 }
+
 .cart-icon {
-  margin-bottom: 10px;
+  padding-bottom: 5px;
   position: relative;
   margin-right: 1rem;
-
   font-size: 2.3rem;
   color: whitesmoke;
 }
 .profile-icon {
-  margin-bottom: 3px;
-
   font-size: 2.3rem;
   color: whitesmoke;
 }
-.navbar {
-  font-size: 1.3rem;
-}
-.nav-link:hover {
-  color: chartreuse;
-}
-.nav-link {
-  color: whitesmoke;
-}
-
-.search-container {
-  height: 1.3rem;
-  display: flex;
-  color: whitesmoke;
-  align-items: center;
-}
 
 .search-input {
-  margin-right: 1.5rem;
-  width: 30%;
+  margin-top: 10px;
+  margin-right: 1rem;
+  width: 40%;
 }
 
+.aditya {
+  display: flex;
+  justify-content: end;
+  width: 80%;
+}
 .search-bar {
   margin-bottom: 0px;
 }
-
 .cart-icon:hover {
   cursor: pointer;
 }
@@ -55,33 +81,32 @@
   width: 30rem !important;
 }
 
-@media (min-width: 300px) and (max-width: 991px) {
-  .cart-icon {
-    font-size: 2rem;
+@media only screen and (max-width: 800px) {
+  .main-navbar .top-navbar .nav-link {
+    font-size: 12px;
+    padding: 8px 10px;
   }
   .profile-icon {
-    font-size: 2rem;
+    margin-right: -0.7rem;
   }
   .search-input {
-    position: absolute;
-    visibility: hidden;
+    width: 79%;
   }
-  .large-navbar {
-    display: none;
+  .aditya {
+    width: 100%;
   }
-  .small-navbar {
-    display: block;
+  .col-md-10 {
+    width: 100%;
   }
-  .button-div {
-    display: flex;
-    align-items: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .search-input {
+    width: 76%;
   }
-  .search-container {
-    position: absolute;
-    right: 4rem;
-    top: 1rem;
-  }
-  .offcanvas {
-    width: 20rem !important;
+}
+@media only screen and (max-width: 400px) {
+  .search-input {
+    width: 72%;
   }
 }

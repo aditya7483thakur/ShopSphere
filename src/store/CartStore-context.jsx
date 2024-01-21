@@ -1,11 +1,33 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { server } from "../App";
+import toast from "react-hot-toast";
+import { UserContext } from "./User-context";
 
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
+  const [refresh, setRefresh] = useState(false);
   const [cartProductList, setCartProductList] = useState([]);
   const [itemAmount, setItemAmount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const { isAuthenticated } = useContext(UserContext);
+  useEffect(() => {
+    const fetchCartProducts = async () => {
+      if (!isAuthenticated) return setCartProductList([]);
+      try {
+        const response = await fetch(`${server}/cart/cartProducts`, {
+          method: "GET",
+          credentials: "include",
+        });
+        const json = await response.json();
+        setCartProductList(json);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCartProducts();
+  }, [refresh, isAuthenticated]);
 
   //counts amount of items in cart
   useEffect(() => {
@@ -26,57 +48,88 @@ const CartContextProvider = ({ children }) => {
   }, [cartProductList]);
 
   //Adds a product to cart
-  const addToCart = (product, id) => {
-    let newProduct = { ...product, amount: 1 };
-    const ProductFound = cartProductList.find((item) => {
-      return item.id === parseInt(id);
-    });
-    if (ProductFound) {
-      const newCart = cartProductList.map((item) => {
-        if (item.id === parseInt(id)) {
-          return { ...item, amount: ProductFound.amount + 1 };
-        } else {
-          return item;
-        }
+  const addToCart = async (_id) => {
+    try {
+      const response = await fetch(`${server}/cart/addToCart/${_id}`, {
+        method: "POST",
+        credentials: "include",
       });
-      setCartProductList(newCart);
-    } else {
-      setCartProductList([...cartProductList, newProduct]);
+
+      const json = await response.json();
+
+      if (json.success) {
+        toast.success(json.message);
+        setRefresh((prev) => !prev);
+      } else {
+        toast.error(json.message);
+      }
+    } catch (error) {
+      toast.error("Some Error occured !");
     }
   };
 
   //increases the quantity of product
-  const incrementProduct = (product, id) => {
-    addToCart(product, id);
+  const incrementProduct = (_id) => {
+    addToCart(_id);
   };
 
   //decreases the quantity of product
-  const decrementProduct = (product, id) => {
-    if (product.amount <= 1) {
-      removeFromCart(id);
-      return;
-    }
-    let newCart = cartProductList.map((item) => {
-      if (item.id === id) {
-        return { ...item, amount: product.amount - 1 };
+  const decrementProduct = async (_id) => {
+    try {
+      const response = await fetch(`${server}/cart/amount/${_id}/decrement`, {
+        method: "PUT",
+        credentials: "include",
+      });
+
+      const json = await response.json();
+
+      if (json.success) {
+        toast.success(json.message);
+        setRefresh((prev) => !prev);
       } else {
-        return item;
+        toast.error(json.message);
       }
-    });
-    setCartProductList(newCart);
+    } catch (error) {
+      toast.error("Some Error Occured !");
+    }
   };
 
   //makes the cart empty
-  const emptyCart = () => {
-    setCartProductList([]);
+  const emptyCart = async () => {
+    try {
+      const response = await fetch(`${server}/cart/clear-cart`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+
+      const json = await response.json();
+
+      if (json.success) {
+        toast.success(json.message);
+        setRefresh((prev) => !prev);
+      } else {
+        toast.error("Some Error Occured !");
+      }
+    } catch (error) {
+      toast.error("Some Error Occured !");
+    }
   };
 
   //removes a product from cart
-  const removeFromCart = (id) => {
-    let newCart = cartProductList.filter((item) => {
-      return item.id !== id;
+  const removeFromCart = async (_id) => {
+    const response = await fetch(`${server}/cart/deleteCartItem/${_id}`, {
+      method: "DELETE",
+      credentials: "include",
     });
-    setCartProductList(newCart);
+
+    const json = await response.json();
+
+    if (json.success) {
+      toast.success(json.message);
+      setRefresh((prev) => !prev);
+    } else {
+      toast.error(json.message);
+    }
   };
 
   return (
