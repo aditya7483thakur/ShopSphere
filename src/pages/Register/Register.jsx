@@ -53,12 +53,15 @@ const Register = () => {
   return (
     <>
       {" "}
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <div
+        className="alert alert-warning alert-dismissible fade show"
+        role="alert"
+      >
         <strong>Hey User !</strong> Backend part of this website is deployed on
         a free server , so it might take 10-15 seconds to register or login.
         <button
           type="button"
-          class="btn-close"
+          className="btn-close"
           data-bs-dismiss="alert"
           aria-label="Close"
         ></button>
