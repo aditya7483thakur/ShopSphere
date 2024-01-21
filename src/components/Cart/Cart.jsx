@@ -1,11 +1,16 @@
+import React, { useContext } from "react";
 import CartProduct from "../CartProduct/CartProduct";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "./Cart.css";
-import { useContext } from "react";
 import { CartContext } from "../../store/CartStore-context";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { UserContext } from "../../store/User-context";
+
+// Import Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+// Import Bootstrap JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const Cart = () => {
   const { cartProductList, itemAmount, totalPrice, emptyCart } =
@@ -21,6 +26,8 @@ const Cart = () => {
     }
 
     setPayment(true);
+
+    // Navigate to the "/check" route
     navigate("/check");
   };
 
@@ -57,7 +64,11 @@ const Cart = () => {
               <RiDeleteBinLine />
             </button>
           </div>
-          <button className="cart-btn" onClick={makePayment}>
+          <button
+            className="cart-btn"
+            data-bs-dismiss="offcanvas"
+            onClick={makePayment}
+          >
             Checkout
           </button>
         </div>
