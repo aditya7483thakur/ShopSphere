@@ -1,50 +1,64 @@
+/* Navbar.css */
+
+/* Main Navbar */
 .main-navbar {
   border-bottom: 1px solid #ccc;
 }
+
+/* Top Navbar */
 .main-navbar .top-navbar {
   padding-top: 4px;
   padding-bottom: 5px;
 }
+
+/* Brand Name */
 .main-navbar .top-navbar .brand-name {
   color: #fff;
 }
+
+/* Nav Links */
 .main-navbar .top-navbar .nav-link {
   color: #fff;
   font-size: 16px;
   font-weight: 500;
 }
-.main-navbar .top-navbar {
-  padding: 0px 0px;
-  border-radius: 0px;
-}
+
+/* Dropdown Item */
 .main-navbar .top-navbar .dropdown-item {
   padding: 8px 16px;
   border-bottom: 1px solid #ccc;
   font-size: 14px;
 }
+
+/* Cart and Profile Icons */
 .main-navbar .top-navbar .dropdown-item {
   width: 20px;
   text-align: center;
   color: #2874f0;
   font-size: 14px;
 }
+
+/* Navbar Background */
 .main-navbar .navbar {
   padding: 0px;
   background-color: #ddd;
 }
 
+/* Navbar Nav Items */
 .main-navbar .navbar .nav-item .nav-link {
   padding: 8px 20px;
   color: #000;
   font-size: 15px;
 }
 
+/* Navbar Title */
 .nav-title {
   font-weight: 600;
   font-size: 1.6rem;
   margin-top: 7px;
 }
 
+/* Cart Icon */
 .cart-icon {
   padding-bottom: 5px;
   position: relative;
@@ -52,35 +66,21 @@
   font-size: 2.3rem;
   color: whitesmoke;
 }
+
+/* Profile Icon */
 .profile-icon {
   font-size: 2.3rem;
   color: whitesmoke;
 }
 
+/* Search Input Container */
 .search-input {
   margin-top: 10px;
   margin-right: 1rem;
-  width: 40%;
+  width: 40%; /* Default width */
 }
 
-.aditya {
-  display: flex;
-  justify-content: end;
-  width: 80%;
-}
-.search-bar {
-  margin-bottom: 0px;
-}
-.cart-icon:hover {
-  cursor: pointer;
-}
-.profile-icon:hover {
-  cursor: pointer;
-}
-.offcanvas {
-  width: 30rem !important;
-}
-
+/* Responsive Adjustments */
 @media only screen and (max-width: 800px) {
   .main-navbar .top-navbar .nav-link {
     font-size: 12px;
@@ -90,23 +90,12 @@
     margin-right: -0.7rem;
   }
   .search-input {
-    width: 79%;
-  }
-  .aditya {
-    width: 100%;
-  }
-  .col-md-10 {
-    width: 100%;
+    width: 60%; /* Adjusted width for smaller screens */
   }
 }
 
-@media only screen and (max-width: 500px) {
-  .search-input {
-    width: 76%;
-  }
-}
 @media only screen and (max-width: 400px) {
   .search-input {
-    width: 72%;
+    width: 70%; /* Adjusted width for even smaller screens */
   }
 }
