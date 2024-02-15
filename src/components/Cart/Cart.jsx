@@ -9,8 +9,6 @@ import { UserContext } from "../../store/User-context";
 
 // Import Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
-// Import Bootstrap JS
-import "bootstrap/dist/js/bootstrap.bundle.min";
 
 const Cart = () => {
   const { cartProductList, itemAmount, totalPrice, emptyCart } =
