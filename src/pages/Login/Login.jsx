@@ -63,10 +63,24 @@ const Login = () => {
           <h2>Login</h2>
           <form className="login-form">
             <label htmlFor="username">Email:</label>
-            <input type="text" id="username" ref={email} />
+            <input
+              type="text"
+              id="username"
+              ref={email}
+              style={{ marginBottom: "0px" }}
+            />
+            <span style={{ marginBottom: "10px" }}>
+              Demo email: demo@gmail.com
+            </span>
 
             <label htmlFor="password">Password:</label>
-            <input type="password" id="password" ref={password} />
+            <input
+              type="password"
+              id="password"
+              ref={password}
+              style={{ marginBottom: "0px" }}
+            />
+            <span>Demo password: demo123</span>
 
             <button type="button" className="login" onClick={handleLogin}>
               Login

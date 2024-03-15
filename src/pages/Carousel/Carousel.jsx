@@ -18,8 +18,6 @@ const Carousel = () => {
     });
   };
 
-  if (!isAuthenticated) return <Navigate to={"/login"} />;
-
   return (
     <>
       <header className="header">

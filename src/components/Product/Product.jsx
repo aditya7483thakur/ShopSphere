@@ -4,9 +4,24 @@ import { FaStar } from "react-icons/fa";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../store/CartStore-context";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../store/User-context";
+import toast from "react-hot-toast";
 
 const Product = ({ item }) => {
   const { addToCart } = useContext(CartContext);
+  const { isAuthenticated } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleAddToCart = (_id) => {
+    console.log(_id);
+    if (!isAuthenticated) {
+      toast.error("Login first");
+      navigate("/login");
+    } else {
+      addToCart(_id);
+    }
+  };
 
   return (
     <div className="card card-container">
@@ -45,7 +60,10 @@ const Product = ({ item }) => {
           </p>
           <p className="product-price">${item.price}</p>
         </div>
-        <button className="add-to-cart" onClick={() => addToCart(item._id)}>
+        <button
+          className="add-to-cart"
+          onClick={() => handleAddToCart(item._id)}
+        >
           Add to Cart
         </button>
       </div>
