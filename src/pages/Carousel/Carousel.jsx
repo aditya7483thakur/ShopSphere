@@ -1,9 +1,6 @@
-import { useContext } from "react";
 import "./Carousel.css";
-import { UserContext } from "../../store/User-context";
 import { FaAnglesDown } from "react-icons/fa6";
-import { ProductListContext } from "../../store/Product-context";
-import { Hits } from "react-instantsearch";
+import { Hits, useInstantSearch } from "react-instantsearch";
 import { Hit } from "../../components/Hit/Hit";
 
 const Carousel = () => {
@@ -14,6 +11,10 @@ const Carousel = () => {
       behavior: "smooth",
     });
   };
+
+  //used this hoook to extract nbhits by which i found that how many items are related to
+  // to the search and if nbhits is 0 that means nothing found by the search
+  const { results } = useInstantSearch();
 
   return (
     <>
@@ -34,7 +35,17 @@ const Carousel = () => {
         </div>
       </header>
       <div className="products-heading">Our Products</div>
-      <Hits hitComponent={Hit} />
+      {results.nbHits === 0 ? (
+        <div
+          className="d-flex align-items-center
+          justify-content-center"
+          style={{ minHeight: "40vh", marginBottom: "5rem" }}
+        >
+          <h1 className="text-center">No match found 🔍</h1>
+        </div>
+      ) : (
+        <Hits hitComponent={Hit} />
+      )}
     </>
   );
 };
