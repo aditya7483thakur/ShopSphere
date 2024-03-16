@@ -15,8 +15,10 @@ const ProductListProdiver = ({ children }) => {
     let data;
     if (isAuthenticated) {
       data = await fetch(`${server}/products`);
+      console.log("fetched from my backend");
     } else {
       data = await fetch(`https://fakestoreapi.com/products`);
+      console.log("fetched from fakestore");
     }
     let products = await data.json();
     setProductList(products);

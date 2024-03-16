@@ -1,11 +1,25 @@
 import "./ProductDetails.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { ProductListContext } from "../../store/Product-context";
 import { CartContext } from "../../store/CartStore-context";
+import { UserContext } from "../../store/User-context";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   const { addToCart } = useContext(CartContext);
+  const { isAuthenticated } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleAddToCart = (_id) => {
+    console.log(_id);
+    if (!isAuthenticated) {
+      toast.error("Login first");
+      navigate("/login");
+    } else {
+      addToCart(_id);
+    }
+  };
 
   let { id } = useParams();
 
@@ -36,7 +50,7 @@ const ProductDetails = () => {
           <div className="product-details-btns">
             <button
               className="product-details-btn"
-              onClick={() => addToCart(product._id)}
+              onClick={() => handleAddToCart(product._id)}
             >
               Add to cart
             </button>

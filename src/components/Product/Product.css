@@ -76,6 +76,27 @@
   transform: scale(1.1);
 }
 
+.ais-Hits-list {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.ais-Hits-item,
+.ais-InfiniteHits-item {
+  align-items: stretch; /* Default value for align-items */
+  background: transparent; /* Default value for background */
+  box-shadow: none; /* Default value for box-shadow */
+  display: block; /* Default value for display */
+  font-size: medium; /* Default value for font-size */
+  font-weight: normal; /* Default value for font-weight */
+  line-height: normal; /* Default value for line-height */
+  padding: 0; /* Default value for padding */
+}
+
 @media (min-width: 300px) and (max-width: 991px) {
   .card-container {
     width: 21rem;

@@ -6,6 +6,8 @@ import Footer from "./components/Footer/Footer";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./store/User-context";
 import { Toaster } from "react-hot-toast";
+import { Configure, InstantSearch } from "react-instantsearch";
+import algoliasearch from "algoliasearch";
 
 export const server = `https://shopspheree-backend.onrender.com`;
 
@@ -38,12 +40,20 @@ function App() {
     fetchUser();
   }, [isAuthenticated]);
 
+  const searchClient = algoliasearch(
+    "ZMR0NCT709",
+    "3979dedb4502ea0dcb7f873c89cc3a71"
+  );
+
   return (
     <>
-      <Navbar />
-      <Outlet />
-      <Toaster />
-      <Footer />
+      <InstantSearch searchClient={searchClient} indexName="PRODUCTS">
+        <Configure hitsPerPage={20} />
+        <Navbar />
+        <Outlet />
+        <Toaster />
+        <Footer />
+      </InstantSearch>
     </>
   );
 }

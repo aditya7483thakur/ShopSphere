@@ -7,7 +7,6 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails.jsx";
 import ProductListProdiver from "./store/Product-context.jsx";
 import CartContextProvider from "./store/CartStore-context.jsx";
 import Category from "./components/Category/Category.jsx";
-import SearchResults from "./components/SearchResults/SearchResults.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/Register/Register.jsx";
 import UserWrapper from "./store/User-context.jsx";
@@ -43,10 +42,6 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
-      },
-      {
-        path: "/search-results",
-        element: <SearchResults />,
       },
       {
         path: "/user-details",

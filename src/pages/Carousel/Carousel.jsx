@@ -1,15 +1,12 @@
 import { useContext } from "react";
 import "./Carousel.css";
 import { UserContext } from "../../store/User-context";
-import { Navigate } from "react-router-dom";
 import { FaAnglesDown } from "react-icons/fa6";
-import Product from "../../components/Product/Product";
 import { ProductListContext } from "../../store/Product-context";
+import { Hits } from "react-instantsearch";
+import { Hit } from "../../components/Hit/Hit";
 
 const Carousel = () => {
-  const { isAuthenticated } = useContext(UserContext);
-  const { productList } = useContext(ProductListContext);
-
   const handleScroll = () => {
     // Scroll down by 100 pixels when the button is clicked
     window.scrollTo({
@@ -37,11 +34,7 @@ const Carousel = () => {
         </div>
       </header>
       <div className="products-heading">Our Products</div>
-      <div className="products-container">
-        {productList.map((item) => (
-          <Product key={item.id} item={item}></Product>
-        ))}
-      </div>
+      <Hits hitComponent={Hit} />
     </>
   );
 };
